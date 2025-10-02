@@ -1,0 +1,50 @@
+#japan_above_img {
+  width: 300px;       /* pick the width you want */
+  height: auto;       /* keeps proportions */
+  display: block;     /* makes margin auto work */
+  margin: 20px auto;  /* top-bottom: 20px, left-right: auto -> centers horizontally */
+}
+
+#welcome-text {
+  text-align: center;
+  font-size: 24px;   /* optional: make it bigger */
+  font-weight: bold; /* optional: make it stand out */
+}
+
+
+.button-container {
+  display: flex;
+  justify-content: center; /* centers the group of buttons */
+  gap: 20px; /* evenly spaces buttons */
+  margin-top: 10px; /* space between text and buttons */
+  margin-bottom: 20px; /* space between buttons and image */
+}
+
+#pagename {
+ text-align: center;
+}
+
+#subhead {
+ text-align: center;
+}
+
+#desc1 {
+ text-align: center;
+}
+
+.adjust second picture
+
+a.link {
+  color: black;
+}
+
+a.visted {
+  color: greenyellow;
+}
+
+a:hover {
+  color: rgb(255, 0, 251);
+}
+a:active {
+  color: rgb(255, 0, 0);
+}
