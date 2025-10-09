@@ -1,146 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <!-- head
-
-        Purpose:
-        - Title used here shows up in the browser tab
-        - Link to the favicon (small image that appears in the browser tab)
-        - Link to the CSS file (used to style the webpage)
-
-        When To Modify:
-        - [ ] Project 2 (REQUIRED FEATURE) 
-        - [ ] Project 2 (STRETCH FEATURE) (favicon)
-        - [ ] Any time after
-        -->
-    <head>
+  <head>
     <title>Corey Worldly Travels</title>
-    <link rel="icon" type="image/png" href="./img/plane_img.png"> 
-    <link rel="stylesheet" href="style.css">
-    </head>
+    <link rel="icon" type="image/png" href="./img/plane_img.png" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-    </head>
-    
-    <body>
-    
-        <!-- navbar [PLACEHOLDER] [ADDED IN UNIT 4] -->
-
-        <!-- headings
-
-        Purpose:
-        - Main header section of the webpage
-        - Contains the title, subtitle, image, and key buttons for the webpage
-
-        When To Modify:
-        - [ ] Project 2 (REQUIRED FEATURE) 
-        - [ ] Project 3 (REQUIRED FEATURE) 
-        - [ ] Project 4 (REQUIRED FEATURE) 
-        - [ ] Any time after
-        -->
-
-        <h1 id="pagename">Corey's Worldly Travels !</h1> 
-        <h3 id="subhead">Come ride along :D</h3>
-        <div class="button-container">
-        <button type="button">About Me!</button>
-        <button type="button">Map of Locations</button>
-        <button type="button">Socials</button>
-        <button type="button">Personalized travel itinerary</button>
-        </div>
-
-        <div class="header-pictures">
-        <img id="japan_above_img" src="./img/planeview.JPEG" alt="Plane_view">
-        <img id="amsterdam_line" src="./img/Amsterdam_line.JPEG" alt="amsterdam">
-        <h6 id="desc1">Plane view of the sunset skyline and cities leaving Japan.</h6>
-        </div>
+  <body>
+    <header class="topbar">
+    <h1 id="pagename">Corey's Worldly Travels!</h1>
 
 
-        
-        <!-- about
+    <div class="button-container">
+    <button onclick="window.location.href='about.html'">About Me!</button>
+    <button onclick="window.location.href='map.html'">Map of Locations</button>
+    <button onclick="window.location.href='socials.html'">Socials</button>
+    <button onclick="window.open('https://avelconcierges.gumroad.com/l/btixi', '_blank')"> Personalized travel itinerary
+    </div>
 
-        Purpose:
-        - Section for general info about the event
-        - Contains a video, description, and key points about the event
+    </header>
 
-        When To Modify:
-        - [ ] Project 2 (REQUIRED FEATURE) 
-        - [ ] Project 2 (STRETCH FEATURE) 
-        - [ ] Project 4 (STRETCH FEATURE) 
-        - [ ] Any time between / after
-        --> 
+    <!-- INTRO SECTION — move this ABOVE your pictures -->
+    <section class="intro">
+    <h2>Welcome to My Travel Blog!</h2>
+    <p>
+        Welcome to my travel blog! I’m Corey — a traveler, foodie, and adventure seeker with a passion for exploring new cultures and cuisines.
+        This blog is where I’ll share my trips, experiences, and food discoveries from around the world. Come along for the journey!
+    </p>
+    </section>
 
-        <h2>Quote I standby</h2>
-        <p>"The world is a book, and those who do not travel read only one page"
-            - St. Augustine </p>
+    <!-- PHOTO SECTION -->
+    <div class="header-pictures">
+    <div class="photo-item">
+        <img src="./img/couple_amsterdam.jpeg" alt="Couple walking through Amsterdam" class="hero-photo">
+        <p class="photo-desc"> My girlfriend and I watching the sunset over the Amsterdam canals.</p>
+    </div>
 
-        <h3>This is blog where I will post my trips and most of my food views. Come along if you </h3>
-        
-        <iframe src="https://www.youtube.com/embed/3cB57ObqV4s"
+    <div class="photo-item">
+        <img src="./img/couple_korea.jpeg" alt="Couple wearing traditional Hanbok in Seoul" class="hero-photo">
+        <p class="photo-desc">Exploring Seoul in traditional Hanbok attire — embracing the culture while in the culture.</p>
+    </div>
+    </div>
+
+
+    <main class="container">
+        <section id="about" class="quote-section">
+        <h2>Quote I Stand By</h2>
+        <p class="quote">“The world is a book, and those who do not travel read only one page.” <br> – St. Augustine</p>
+      </section>
+    </main>
+
+
+        <div class="video-wrap">
+          <iframe
+            src="https://www.youtube.com/embed/3cB57ObqV4s"
             title="Nara Park"
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerpolicy="strict-origin-when-cross-origin"
             allowfullscreen>
-        </iframe>
-        
-        <h4>Tag Line</h4>
-        <ul>
-            <li> <b>Bullet 1:</b> <i>Description</i></li>
-            <li> <b>Bullet 2:</b> <i>Description</i></li>
-            <li> <b>Bullet 3:</b> <i>Description</i></li>
-        </ul>
+          </iframe>
+        </div>
+      </section>
 
-        <!-- schedule
+      <!-- schedule
+      Purpose:
+      - Section for specific info about the event's schedule
+      - Contains images and descriptions of each activity
+      When To Modify:
+      - [ ] Project 2 (REQUIRED FEATURE)
+      - [ ] Project 4 (STRETCH FEATURE)
+      - [ ] Any time between / after
+      -->
+    <h2 class="event-title">Event Schedule</h2>
 
-        Purpose:
-        - Section for specific info about the event's schedule
-        - Contains images and descriptions of each activity
+    <div class="event-container">
 
-        When To Modify:
-        - [ ] Project 2 (REQUIRED FEATURE) 
-        - [ ] Project 4 (STRETCH FEATURE) 
-        - [ ] Any time between / after
-        --> 
-        <h2>Event Schedule</h2>
+    <!-- Event 1 -->
+    <div class="event">
+        <h4 class="event-label">Event 1</h4>
+        <h3>Weekend Celebration in the Dominican Republic 🇩🇴</h3>
+        <p>
+        Heading to the Dominican Republic in late October (Friday 24–26) for a special family birthday celebration! 
+        It’s the perfect excuse to enjoy some sunshine, great food, and quality time with loved ones. 
+        Between the music, local dishes, and beach views, it’s sure to be a weekend full of laughter and memories.
+        </p>
+    </div>
 
-        <img alt="" src="./img/placeholder.png"/>
-        <h3>Event Activity 1</h3>
-        <p>Description of event activity.</p>
-            
-        <img alt="Image description" src="./img/example.png"/>
-        <h3>Event Activity 2</h3>
-        <p>Description of event activity.</p>
+    <!-- Event 2 -->
+    <div class="event">
+        <h4 class="event-label">Event 2</h4>
+        <h3>Thanksgiving Week in Japan <br> 🇯🇵</h3>
+        <p>
+        Returning to Japan this November for a full week of exploring and reconnecting with old favorites! 
+        I’ll be spending Thanksgiving in Tokyo, visiting Kyoto’s autumn temples, and diving into the winter street food scene.
+        </p>
+    </div>
 
-        <img alt="Image description" src="./img/example.png"/>
-        <h3>Event Activity 2</h3>
-        <p>Description of event activity.</p>
-
-        <!-- rsvp [PLACEHOLDER] [ADDED IN UNIT 6] -->
-        <!-- success modal [PLACEHOLDER] [ADDED IN UNIT 9] --> 
-
-        <!-- links
-
-        Purpose:
-        - Links to other resources related to the event
-
-        When To Modify:
-        - [ ] Project 2 (STRETCH FEATURE) 
-        - [ ] Project 4 (STRETCH FEATURE) 
-        - [ ] Any time between / after
-        --> 
-        <h2>Follow Along!</h2>
-
-        <!-- This <a> block is one link.  Copy and paste all 6 lines to create another link. -->
-        <a class="block" href="https://www.codepath.org">
-            <article>
-                <h3>Newsletter</h3> 
-            </article>
-        </a>
-                <p>Follow the newsletter to get updates whenever I travel somewhere !</p>
-
-            
-        <!-- footer [PLACEHOLDER] [ADDED IN UNIT 3] -->
-        <!-- script [PLACEHOLDER] [ADDED IN UNIT 5] -->
+    </div>
 
 
-    </body>
+      <!-- links
+      Purpose:
+      - Links to other resources related to the event
+      When To Modify:
+      - [ ] Project 2 (STRETCH FEATURE)
+      - [ ] Project 4 (STRETCH FEATURE)
+      - [ ] Any time between / after
+      -->
+    <footer>
+    <h2>Follow Along!</h2>
+    <a class="footer-link" href="https://www.codepath.org" target="_blank">
+        <h3>Newsletter</h3>
+    </a>
+    <p>Follow the newsletter to get updates whenever I travel somewhere!</p>
+    </footer>
+
+
+    <!-- footer [PLACEHOLDER] [ADDED IN UNIT 3] -->
+    <!-- script [PLACEHOLDER] [ADDED IN UNIT 5] -->
+  </body>
 </html>

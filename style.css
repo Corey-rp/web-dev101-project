@@ -1,50 +1,305 @@
-#japan_above_img {
-  width: 300px;       /* pick the width you want */
-  height: auto;       /* keeps proportions */
-  display: block;     /* makes margin auto work */
-  margin: 20px auto;  /* top-bottom: 20px, left-right: auto -> centers horizontally */
+/* --- Photo gallery (2 images side by side) --- */
+.header-pictures {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;              /* space between the pictures */
+  flex-wrap: wrap;        /* stacks them on smaller screens */
+  margin-top: 30px;
 }
 
-#welcome-text {
+/* Each picture + caption block */
+.photo-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 380px;           /* adjust to make images smaller/larger */
+}
+
+/* Image styling */
+.hero-photo {
+  width: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease-in-out;
+}
+
+/* Description under each photo */
+.photo-desc {
   text-align: center;
-  font-size: 24px;   /* optional: make it bigger */
-  font-weight: bold; /* optional: make it stand out */
+  font-style: italic;
+  color: #444;
+  font-size: 0.95rem;
+  margin-top: 10px;
 }
 
+.intro {
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 0 20px;
+  text-align: center;
+}
 
 .button-container {
   display: flex;
   justify-content: center; /* centers the group of buttons */
-  gap: 20px; /* evenly spaces buttons */
-  margin-top: 10px; /* space between text and buttons */
-  margin-bottom: 20px; /* space between buttons and image */
+  gap: 20px;               /* evenly spaces buttons */
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
 
-#pagename {
- text-align: center;
+.button-container button {
+  padding: 8px 14px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  background: #fafafa;
+  font-weight: 600;
+  cursor: pointer;
 }
 
 #subhead {
- text-align: center;
+  text-align: center;
+  margin-top: 10px;
 }
 
-#desc1 {
- text-align: center;
+/* === Header layout === */
+.topbar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 20px;
+
+  /* blended translucent style */
+  background: linear-gradient(to bottom, rgba(255,255,255,0.8), rgba(255,255,255,0.5));
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  border-bottom: 1px solid rgba(255,255,255,0.4);
+  border-radius: 0 0 20px 20px;
+
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
-.adjust second picture
 
-a.link {
-  color: black;
-}
-
-a.visted {
-  color: greenyellow;
+#pagename {
+  margin: 0;
+  font-family: Georgia, serif;
+  font-size: 2em;
+  font-weight: bold;
 }
 
-a:hover {
-  color: rgb(255, 0, 251);
+/* Navbar */
+.navbar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
-a:active {
-  color: rgb(255, 0, 0);
+
+.navbar a {
+  text-decoration: none;
+  color: #000;
+  font-weight: 600;
+  transition: color 0.3s;
 }
+
+.navbar a:hover {
+  color: #0077cc;
+}
+
+/* Buttons directly under navbar */
+.button-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.button-container button {
+  padding: 10px 18px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background: #fafafa;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.05s;
+}
+
+.button-container button:hover {
+  background: #f0f0f0;
+}
+
+.button-container button:active {
+  transform: translateY(1px);
+}
+
+button {
+  background-color: #D2CFF5;
+  font-family: monospace;
+  font-size: 18px;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.1s ease;
+}
+
+button:hover {
+  background-color: #bdb8f0;
+}
+
+button:active {
+  transform: translateY(2px);
+}
+
+body {
+  background: linear-gradient(to bottom, #E9F2FF 0%, #EFD9B4 50%, #FCE8C2 100%);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #161616;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+}
+
+
+.video-wrap {
+  display: flex;
+  justify-content: center;
+  margin: 40px 0;       /* adds space above and below the video */
+}
+
+.video-wrap iframe {
+  width: 560px;         /* standard YouTube embed size */
+  height: 315px;
+  border-radius: 12px;  /* optional: rounded corners */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* optional: subtle shadow */
+}
+
+/* Center the main Event Schedule heading */
+.event-title {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 30px;
+}
+
+/* Make both event boxes centered and aligned neatly */
+.event-container {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap; /* makes them stack on smaller screens */
+}
+
+/* Each event box */
+.event {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 480px;
+  position: relative;
+}
+
+/* Event image */
+.event img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+/* Event label ("Event 1", "Event 2") */
+.event-label {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #333;
+  background-color: #f1f0f0e9;
+  padding: 3px 10px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 14px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Headings inside boxes */
+.event h3 {
+  margin-top: 10px;
+  font-size: 20px;
+  color: #222;
+}
+
+/* Paragraph styling */
+.event p {
+  font-size: 15px;
+  color: #444;
+  line-height: 1.6;
+}
+
+.quote-section {
+  text-align: center;
+  margin: 60px auto;
+  max-width: 700px;
+}
+
+.quote-section h2 {
+  font-size: 28px;
+  margin-bottom: 15px;
+}
+
+.quote {
+  font-style: italic;
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 25px;
+  line-height: 1.6;
+}
+
+.quote-section h3 {
+  font-weight: 500;
+  font-size: 17px;
+  color: #222;
+}
+
+footer {
+  background-color: #f9e7c0; /* soft warm tone matching your horizon theme */
+  text-align: center;
+  padding: 30px 0;
+  margin-top: 60px;
+  border-top: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+footer h2 {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+footer h3 {
+  color: #4b0082; /* same purple link tone */
+  margin: 5px 0;
+}
+
+footer p {
+  color: #333;
+  font-size: 0.95rem;
+}
+
+.footer-link {
+  text-decoration: none;
+}
+
+.footer-link:hover h3 {
+  text-decoration: underline;
+}
+
+
