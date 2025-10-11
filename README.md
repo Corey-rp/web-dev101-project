@@ -1,1 +1,1 @@
-![Configuration Demo](https://imgur.com/a/iSoLZ4W)
+2e![Configuration Demo](https://i.imgur.com/Fk7y4AI.gif)
