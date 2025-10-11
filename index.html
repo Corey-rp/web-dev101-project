@@ -10,9 +10,15 @@
     <header class="topbar">
     <h1 id="pagename">Corey's Worldly Travels!</h1>
 
+        <nav class="navbar">
+    <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#events">Upcoming Trips</a></li>
+    </ul>
+    </nav>
+
 
     <div class="button-container">
-    <button onclick="window.location.href='about.html'">About Me!</button>
     <button onclick="window.location.href='map.html'">Map of Locations</button>
     <button onclick="window.location.href='socials.html'">Socials</button>
     <button onclick="window.open('https://avelconcierges.gumroad.com/l/btixi', '_blank')"> Personalized travel itinerary
@@ -21,12 +27,10 @@
     </header>
 
     <!-- INTRO SECTION — move this ABOVE your pictures -->
-    <section class="intro">
-    <h2>Welcome to My Travel Blog!</h2>
-    <p>
-        Welcome to my travel blog! I’m Corey — a traveler, foodie, and adventure seeker with a passion for exploring new cultures and cuisines.
-        This blog is where I’ll share my trips, experiences, and food discoveries from around the world. Come along for the journey!
-    </p>
+    <section id="about" class="intro">
+    <h2>About Me</h2>
+    <p>Hi! I’m Corey, a travel enthusiast who loves exploring new cultures, cuisines, and cities. 
+        Join me as I share stories from my adventures across the world.</p>
     </section>
 
     <!-- PHOTO SECTION -->
@@ -63,62 +67,40 @@
         </div>
       </section>
 
-      <!-- schedule
-      Purpose:
-      - Section for specific info about the event's schedule
-      - Contains images and descriptions of each activity
-      When To Modify:
-      - [ ] Project 2 (REQUIRED FEATURE)
-      - [ ] Project 4 (STRETCH FEATURE)
-      - [ ] Any time between / after
-      -->
-    <h2 class="event-title">Event Schedule</h2>
+        <!-- Event Schedule -->
+    <section id="events" class="events-section">
+    <h2 class="event-title">Upcoming Trips</h2>
 
     <div class="event-container">
-
-    <!-- Event 1 -->
-    <div class="event">
-        <h4 class="event-label">Event 1</h4>
+        <article class="event">
+        <span class="event-label">Trip 1</span>
         <h3>Weekend Celebration in the Dominican Republic 🇩🇴</h3>
-        <p>
-        Heading to the Dominican Republic in late October (Friday 24–26) for a special family birthday celebration! 
-        It’s the perfect excuse to enjoy some sunshine, great food, and quality time with loved ones. 
-        Between the music, local dishes, and beach views, it’s sure to be a weekend full of laughter and memories.
-        </p>
+        <p>Heading to the Dominican Republic in late October (Friday 24–26) for a special family birthday celebration! It’s the perfect excuse to enjoy some sunshine, great food, and quality time with loved ones. Between the music, local dishes, and beach views, it’s sure to be a weekend full of laughter and memories.</p>
+        </article>     
+
+        <article class="event"> 
+        <span class="event-label">Trip 2</span>
+        <h3>Thanksgiving Week in Japan <br>🇯🇵</h3>         
+        <p>Returning to Japan this November for a full week of exploring and reconnecting with old favorites! I’ll be spending Thanksgiving in Tokyo with my girlfriend and her family exploring the city and indulging in many different foods. </p>
+        </article> 
     </div>
-
-    <!-- Event 2 -->
-    <div class="event">
-        <h4 class="event-label">Event 2</h4>
-        <h3>Thanksgiving Week in Japan <br> 🇯🇵</h3>
-        <p>
-        Returning to Japan this November for a full week of exploring and reconnecting with old favorites! 
-        I’ll be spending Thanksgiving in Tokyo, visiting Kyoto’s autumn temples, and diving into the winter street food scene.
-        </p>
-    </div>
-
-    </div>
+    </section>
 
 
-      <!-- links
-      Purpose:
-      - Links to other resources related to the event
-      When To Modify:
-      - [ ] Project 2 (STRETCH FEATURE)
-      - [ ] Project 4 (STRETCH FEATURE)
-      - [ ] Any time between / after
-      -->
-    <footer>
+
+    <footer class="newsletter-footer">
     <h2>Follow Along!</h2>
-    <a class="footer-link" href="https://forms.gle/cesQiAnSN6KFyuKP7" target="_blank">
+    <a class="footer-link" href="https://forms.gle/cesQiAnSN6KFyuKP7" target="_blank" rel="noopener">
         <h3>Join My Newsletter ✈️</h3>
     </a>
-    <p>Stay updated with my latest travels, photos, and stories — one trip at a time!</p>
+    <p>Get updates and behind-the-scenes stories from my travels!</p>
     </footer>
 
+    <div class="sticky-footer">
+    <p>Thanks for visiting Corey’s Worldly Travels! 🌍</p>
+    <p>Made with TML, CSS, JavaScript.</p>
+    </div>
 
 
-    <!-- footer [PLACEHOLDER] [ADDED IN UNIT 3] -->
-    <!-- script [PLACEHOLDER] [ADDED IN UNIT 5] -->
   </body>
 </html>
