@@ -14,6 +14,10 @@
     <ul>
         <li><a href="#about">About</a></li>
         <li><a href="#events">Upcoming Trips</a></li>
+    <button id="theme-button" class="theme-toggle" aria-pressed="false" title="Toggle dark mode">
+      🌙 Night
+    </button>
+
     </ul>
     </nav>
 
@@ -86,6 +90,54 @@
     </div>
     </section>
 
+  <section id="rsvp">
+    <h2 class="event-title">World Through My Lens 📷</h2>
+    <p id="rsvp-count">⭐ 3 people have RSVP’d to this event!</p>
+
+    <div class="rsvp-container">
+      <div class="rsvp-para">
+        <p>
+          Got a photo that captures the magic of your travels? Submit it below and join my monthly 
+          <strong>World Through My Lens</strong> challenge!  
+          Each month, I’ll spotlight a few of my favorite submissions on the blog.
+        </p>
+
+        <form id="rsvp-form" autocomplete="off">
+          <label>
+            Name
+            <input id="rsvp-name" type="text" placeholder="e.g., John Doe" required />
+          </label>
+
+          <label>
+            Location of Photo
+            <input id="rsvp-place" type="text" placeholder="e.g., Lisbon, Portugal" />
+          </label>
+
+          <label>
+            Photo URL (optional)
+            <input id="rsvp-photo" type="url" placeholder="Paste your photo link (Instagram, Flickr, etc.)" />
+          </label>
+
+          <label>
+            Caption or Story
+            <textarea id="rsvp-message" rows="3" placeholder="Describe the moment behind your photo..."></textarea>
+          </label>
+
+          <button type="submit" id="rsvp-button">Submit Photo</button>
+        </form>
+      </div>
+
+      <div class="rsvp-participants">
+        <h3>Recent Submissions</h3>
+        <ul id="rsvp-list">
+          <li>🌅 DJ from Texas — “Golden hour in Santorini.”</li>
+          <li>🌇 Amy from New York — “Neon dreams in Tokyo.”</li>
+          <li>🏔️ Teresa from Montana — “Peace in the Alps.”</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
 
 
     <footer class="newsletter-footer">
@@ -101,6 +153,6 @@
     <p>Made with TML, CSS, JavaScript.</p>
     </div>
 
-
+  <script src="index.js"></script>
   </body>
 </html>

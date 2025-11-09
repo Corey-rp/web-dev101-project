@@ -22,24 +22,48 @@ body {
 /******************************
  * 2) HEADER / NAV
  ******************************/
+/* === Header layout === */
 .topbar {
+  position: relative;                /* allows absolute positioning inside */
   display: flex;
-  flex-direction: column;
+  flex-direction: column;            /* stack title and nav vertically */
   align-items: center;
   gap: 10px;
   padding: 20px;
 
-  /* blended translucent style */
   background: linear-gradient(to bottom, rgba(255,255,255,0.8), rgba(255,255,255,0.5));
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-
   border-bottom: 1px solid rgba(255,255,255,0.4);
   border-radius: 0 0 20px 20px;
-
-  text-align: center;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
+
+/* move dark mode button to top-right corner */
+#theme-button {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  background: #fafafa;
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+#theme-button:hover {
+  background: #ececec;
+}
+
+/* optional dark mode styling for button */
+body.dark-mode #theme-button {
+  background: #1a2842;
+  color: #e9eef7;
+  border-color: rgba(255,255,255,0.3);
+}
+
 
 #pagename {
   margin: 0;
@@ -301,6 +325,126 @@ button:active { transform: translateY(2px); }
 }
 
 /******************************
+ * RSVP SECTION STYLES
+ ******************************/
+#rsvp {
+  margin: 60px auto;
+  max-width: 1000px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  backdrop-filter: blur(6px);
+}
+
+.rsvp-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+#rsvp-count {
+  text-align: center;
+  font-weight: 600;
+  color: #444;
+  margin-bottom: 20px;
+  transition: opacity .25s ease;
+}
+.dark-mode #rsvp-count { color: #e9eef7; }
+
+
+.dark-mode #rsvp-count {
+  color: #e9eef7;
+}
+
+
+.rsvp-para,
+.rsvp-participants {
+  flex: 1 1 45%;
+}
+
+.rsvp-para p {
+  color: #333;
+  line-height: 1.6;
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+.rsvp-para label {
+  display: block;
+  font-weight: 600;
+  margin-top: 10px;
+  color: #222;
+}
+
+.rsvp-para input,
+.rsvp-para select,
+.rsvp-para textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 0.95rem;
+}
+
+.rsvp-para button {
+  margin-top: 15px;
+  background-color: #d2cff5;
+  color: #000;
+  font-weight: 600;
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.rsvp-para button:hover {
+  background-color: #bdb8f0;
+}
+
+.rsvp-participants h3 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.rsvp-participants ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.rsvp-participants li {
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Dark mode adjustments */
+.dark-mode #rsvp {
+  background: rgba(20, 26, 40, 0.9);
+  color: #e9eef7;
+}
+
+.dark-mode .rsvp-para input,
+.dark-mode .rsvp-para textarea,
+.dark-mode .rsvp-para select {
+  background: rgba(16, 21, 34, 0.85);
+  color: #e9eef7;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .rsvp-participants li {
+  background: rgba(24, 30, 46, 0.9);
+}
+
+
+/******************************
  * 10) RESPONSIVE TWEAKS
  ******************************/
 @media (max-width: 700px) {
@@ -308,4 +452,140 @@ button:active { transform: translateY(2px); }
     width: 90%;
     height: auto;
   }
+}
+
+.theme-toggle{
+  margin-top: 6px;
+  padding: 8px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(0,0,0,.08);
+  background:#fafafa;
+  font-weight:600;
+  cursor:pointer;
+}
+.dark-mode .theme-toggle{
+  background:#141a28;
+  color:#e9eef7;
+  border-color:rgba(255,255,255,.12);
+}
+
+/* ===== DARK MODE (night-sky horizon) ===== */
+.dark-mode{
+  color:#e9eef7;
+}
+
+body.dark-mode {
+  background-image:
+    radial-gradient(1px 1px at 18% 22%, rgba(255,255,255,.25) 50%, transparent 51%),
+    radial-gradient(1px 1px at 78% 16%, rgba(255,255,255,.18) 50%, transparent 51%),
+    linear-gradient(to bottom, #0b1a2a 0%, #0e2238 52%, #1a2d4a 100%);
+  background-repeat: repeat, repeat, no-repeat;
+  background-size: 600px 600px, 600px 600px, cover;
+  background-attachment: fixed;
+  color: #e9eef7;
+}
+
+
+/* header/top bar glass */
+.dark-mode .topbar{
+  background:linear-gradient(to bottom, rgba(16,22,34,.78), rgba(16,22,34,.55));
+  border-bottom:1px solid rgba(255,255,255,.08);
+  box-shadow:0 4px 14px rgba(0,0,0,.35);
+}
+
+/* links */
+.dark-mode a{ color:#9ecbff; }
+.dark-mode .navbar a{ color:#e9eef7; }
+.dark-mode .navbar a:hover{ color:#b9dcff; }
+
+/* cards / panels (events, etc.) */
+.dark-mode .event{
+  background:rgba(16,21,34,.90);
+  color:#e9eef7;
+  box-shadow:0 6px 14px rgba(0,0,0,.35);
+  border:1px solid rgba(255,255,255,.06);
+}
+
+/* photo shadows a touch cooler */
+.dark-mode .hero-photo{
+  box-shadow:0 6px 12px rgba(0,0,0,.35);
+}
+
+/* quote block */
+.dark-mode .quote-section h2,
+.dark-mode .quote-section h3,
+.dark-mode .quote{ color:#dfe7f4; }
+
+/* newsletter footer */
+.dark-mode .newsletter-footer{
+  background:rgba(16,21,34,.92);
+  color:#e9eef7;
+  border-top:1px solid rgba(255,255,255,.1);
+}
+.dark-mode .footer-link:hover h3{ text-decoration:underline; }
+
+/* sticky footer */
+.dark-mode .sticky-footer{
+  background:rgba(16,21,34,.92);
+  color:#e9eef7;
+  border-top:1px solid rgba(255,255,255,.1);
+}
+
+/* buttons (global) */
+.dark-mode button{
+  background:#1a2842;
+  color:#e9eef7;
+}
+.dark-mode button:hover{ background:#213356; }
+
+/* Fix event text visibility in dark mode */
+.dark-mode .event,
+.dark-mode .event h3,
+.dark-mode .event p,
+.dark-mode .event-label {
+  color: #ffffff !important; /* pure white text */
+}
+
+/* Optional: slightly lighten background for better contrast */
+.dark-mode .event {
+  background: rgba(30, 40, 60, 0.95);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
+}
+
+/* === RSVP Form Text Colors in Dark Mode === */
+.dark-mode .rsvp-para label,
+.dark-mode .rsvp-para p,
+.dark-mode .rsvp-para h3 {
+  color: #ffffff !important; /* label and paragraph text */
+}
+
+.dark-mode input,
+.dark-mode textarea,
+.dark-mode select {
+  background-color: rgba(255, 255, 255, 0.08); /* subtle translucent box */
+  color: #ffffff; /* input text color */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.dark-mode input::placeholder,
+.dark-mode textarea::placeholder {
+  color: rgba(255, 255, 255, 0.6); /* lighter placeholder text */
+}
+
+.dark-mode select option {
+  background-color: #1a1f2f;
+  color: #ffffff;
+}
+
+/* Highlight invalid inputs */
+.error {
+  border: 2px solid #e63946 !important; /* red border */
+  background-color: rgba(230, 57, 70, 0.1); /* soft pink background */
+  transition: 0.3s;
+}
+
+/* Optional for dark mode – adjust contrast */
+.dark-mode .error {
+  border: 2px solid #ff7b7b !important;
+  background-color: rgba(255, 80, 80, 0.15);
 }
