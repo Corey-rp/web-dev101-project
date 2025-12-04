@@ -1,26 +1,41 @@
 /******************************
- * Dark Mode
+ * Dark Mode (with memory)
  ******************************/
-let themeButton = document.getElementById("theme-button");
+const themeButton = document.getElementById("theme-button");
 
-const toggleDarkMode = () => {
-  document.body.classList.toggle("dark-mode");
-};
+function applyTheme(mode) {
+  document.body.classList.toggle("dark-mode", mode === "dark");
 
-themeButton.addEventListener("click", toggleDarkMode);
+  if (themeButton) {
+    themeButton.textContent = mode === "dark" ? "☀️ Day" : "🌙 Night";
+  }
+}
+
+// Load saved theme on page load (default: light)
+const savedTheme = localStorage.getItem("theme") || "light";
+applyTheme(savedTheme);
+
+// Toggle theme on click + remember choice
+if (themeButton) {
+  themeButton.addEventListener("click", () => {
+    const next = document.body.classList.contains("dark-mode") ? "light" : "dark";
+    applyTheme(next);
+    localStorage.setItem("theme", next);
+  });
+}
 
 
 /******************************
- * RSVP — Form Handling
+ * RSVP — Form + Counter
  ******************************/
-const rsvpForm   = document.getElementById("rsvp-form");
-const rsvpButton = document.getElementById("rsvp-button");   // submit button
-const rsvpList   = document.getElementById("rsvp-list");
+const rsvpForm    = document.getElementById("rsvp-form");
+const rsvpButton  = document.getElementById("rsvp-button");
+const rsvpList    = document.getElementById("rsvp-list");
 const rsvpSection = document.getElementById("rsvp");
 
 // Create / locate the counter element just under the RSVP heading
 let countEl = document.getElementById("rsvp-count");
-if (!countEl) {
+if (!countEl && rsvpSection) {
   countEl = document.createElement("p");
   countEl.id = "rsvp-count";
   const container = rsvpSection.querySelector(".rsvp-container");
@@ -32,14 +47,28 @@ let count = rsvpList ? rsvpList.querySelectorAll("li").length : 0;
 updateCount();
 
 function updateCount() {
+  if (!countEl) return;
   const label = count === 1 ? "person has" : "people have";
   countEl.textContent = `⭐ ${count} ${label} RSVP’d to this event!`;
 }
 
-// Responsible only for adding to the list + updating count
-function addParticipant(name, place, message) {
+// Add a new participant to the list and update counter
+function addParticipant(person) {
+  if (!rsvpList) return;
+
   const li = document.createElement("li");
-  li.textContent = `📸 ${name} from ${place} — “${message || "Shared their moment!"}”`;
+
+  const placeText =
+    person.hometown && person.hometown.length > 0
+      ? person.hometown
+      : "somewhere in the world";
+
+  const captionText =
+    person.message && person.message.length > 0
+      ? ` — “${person.message}”`
+      : ' — “Shared their moment!”';
+
+  li.textContent = `📸 ${person.name} from ${placeText}${captionText}`;
   rsvpList.appendChild(li);
 
   count += 1;
@@ -48,43 +77,102 @@ function addParticipant(name, place, message) {
 
 
 /******************************
- * RSVP — Form Validation
+ * Success Modal + Animation
+ ******************************/
+let rotateFactor = 0;
+let modalImage   = document.getElementById("modal-img");
+let animationId  = null;
+
+function animateImage() {
+  if (!modalImage) return;
+  // Alternate between 0° and -10° for a “waving” effect
+  rotateFactor = rotateFactor === 0 ? -10 : 0;
+  modalImage.style.transform = `rotate(${rotateFactor}deg)`;
+}
+
+const toggleModal = (person) => {
+  const modal     = document.getElementById("success-modal");
+  const modalText = document.getElementById("modal-text");
+
+  if (!modal) return;
+
+  // Show modal
+  modal.style.display = "flex";
+
+  if (modalText) {
+    const placeText =
+      person.hometown && person.hometown.length > 0
+        ? person.hometown
+        : "your travels";
+
+    modalText.textContent =
+      `Thanks for RSVPing, ${person.name}! We can’t wait to see your photo from ${placeText}.`;
+  }
+
+  // Start waving animation
+  if (!animationId) {
+    animationId = setInterval(animateImage, 300);
+  }
+
+  // Hide modal after 5 seconds
+  setTimeout(() => {
+    modal.style.display = "none";
+    if (animationId) {
+      clearInterval(animationId);
+      animationId = null;
+    }
+  }, 5000);
+};
+
+
+/******************************
+ * RSVP — Form Validation (using object)
  ******************************/
 function validateForm(event) {
-  // we’re listening on the button, so prevent form submit page reload
+  // prevent page reload
   event.preventDefault();
+  if (!rsvpForm) return;
 
   const nameEl    = document.getElementById("rsvp-name");
   const placeEl   = document.getElementById("rsvp-place");
   const messageEl = document.getElementById("rsvp-message");
 
-  // Clear any previous error styling
-  [nameEl, placeEl, messageEl].forEach(el => el.classList.remove("error"));
+  // Clear previous error highlighting
+  [nameEl, placeEl, messageEl].forEach((el) => {
+    if (el) el.classList.remove("error");
+  });
 
   let containsErrors = false;
 
-  // Require name + place
-  if (nameEl.value.trim() === "") {
-    nameEl.classList.add("error");
+  const nameValue    = nameEl ? nameEl.value.trim() : "";
+  const placeValue   = placeEl ? placeEl.value.trim() : "";
+  const messageValue = messageEl ? messageEl.value.trim() : "";
+
+  // Require at least 2 characters for name and location
+  if (nameValue.length < 2) {
+    if (nameEl) nameEl.classList.add("error");
     containsErrors = true;
   }
-  if (placeEl.value.trim() === "") {
-    placeEl.classList.add("error");
+  if (placeValue.length < 2) {
+    if (placeEl) placeEl.classList.add("error");
     containsErrors = true;
   }
 
-  // If no errors, add participant and clear fields
+  // If valid, build person object, add participant, show modal, clear form
   if (!containsErrors) {
-    addParticipant(
-      nameEl.value.trim(),
-      placeEl.value.trim(),
-      messageEl.value.trim()
-    );
+    const person = {
+      name: nameValue,
+      hometown: placeValue,
+      message: messageValue,
+    };
 
-    // Clear all fields
+    addParticipant(person);
+    toggleModal(person);
     rsvpForm.reset();
   }
 }
 
 // Listen on the button per the project directions
-rsvpButton.addEventListener("click", validateForm);
+if (rsvpButton) {
+  rsvpButton.addEventListener("click", validateForm);
+}

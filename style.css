@@ -1,11 +1,13 @@
 /******************************
  * 1) BASE / PAGE LAYOUT
  ******************************/
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
+
 html {
   scroll-behavior: smooth;
 }
-
 
 body {
   background: linear-gradient(to bottom, #E9F2FF 0%, #EFD9B4 50%, #FCE8C2 100%);
@@ -22,30 +24,33 @@ body {
 /******************************
  * 2) HEADER / NAV
  ******************************/
-/* === Header layout === */
 .topbar {
-  position: relative;                /* allows absolute positioning inside */
+  position: relative; /* allows absolute positioning inside */
   display: flex;
-  flex-direction: column;            /* stack title and nav vertically */
+  flex-direction: column; /* stack title and nav vertically */
   align-items: center;
   gap: 10px;
   padding: 20px;
 
-  background: linear-gradient(to bottom, rgba(255,255,255,0.8), rgba(255,255,255,0.5));
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0.5)
+  );
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border-bottom: 1px solid rgba(255,255,255,0.4);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
   border-radius: 0 0 20px 20px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-/* move dark mode button to top-right corner */
+/* Dark-mode toggle button in header */
 #theme-button {
   position: absolute;
   top: 20px;
   right: 30px;
   background: #fafafa;
-  border: 1px solid rgba(0,0,0,0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   padding: 8px 16px;
   font-weight: 600;
@@ -57,13 +62,11 @@ body {
   background: #ececec;
 }
 
-/* optional dark mode styling for button */
 body.dark-mode #theme-button {
   background: #1a2842;
   color: #e9eef7;
-  border-color: rgba(255,255,255,0.3);
+  border-color: rgba(255, 255, 255, 0.3);
 }
-
 
 #pagename {
   margin: 0;
@@ -122,7 +125,7 @@ body.dark-mode #theme-button {
 }
 
 button {
-  background-color: #D2CFF5;
+  background-color: #d2cff5;
   font-family: monospace;
   font-size: 18px;
   padding: 10px 18px;
@@ -133,18 +136,23 @@ button {
   font-weight: 600;
 }
 
-button:hover { background-color: #bdb8f0; }
-button:active { transform: translateY(2px); }
+button:hover {
+  background-color: #bdb8f0;
+}
+
+button:active {
+  transform: translateY(2px);
+}
 
 /******************************
- * 5) PHOTO GALLERY (2 images side-by-side)
+ * 5) PHOTO GALLERY
  ******************************/
 .header-pictures {
   display: flex;
   justify-content: center;
   align-items: flex-start;
   gap: 40px;
-  flex-wrap: wrap;     /* stacks on smaller screens */
+  flex-wrap: wrap; /* stacks on smaller screens */
   margin-top: 30px;
 }
 
@@ -153,7 +161,7 @@ button:active { transform: translateY(2px); }
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 380px;        /* adjust for image size */
+  width: 380px;
 }
 
 /* Image styling */
@@ -195,7 +203,7 @@ button:active { transform: translateY(2px); }
 }
 
 /******************************
- * 7) EVENTS
+ * 7) EVENTS / TRIPS
  ******************************/
 .event-title {
   text-align: center;
@@ -220,26 +228,6 @@ button:active { transform: translateY(2px); }
   position: relative;
 }
 
-.event img {
-  width: 100%;
-  border-radius: 10px;
-  margin-bottom: 10px;
-}
-
-.event-label {
-  position: absolute;
-  top: -15px;
-  left: 50%;
-  transform: translateX(-50%);
-  color: #333;
-  background-color: #f1f0f0e9;
-  padding: 3px 10px;
-  border-radius: 8px;
-  font-weight: bold;
-  font-size: 14px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
-
 .event h3 {
   margin-top: 10px;
   font-size: 20px;
@@ -250,6 +238,31 @@ button:active { transform: translateY(2px); }
   font-size: 15px;
   color: #444;
   line-height: 1.6;
+}
+
+/* status chips for previous / upcoming trips */
+.status-chip {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  background-color: #f1f0f0e9;
+  color: #333;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.status-chip.is-past {
+  background-color: #f0f0ff;
+  color: #4b4b9c;
+}
+
+.status-chip.is-upcoming {
+  background-color: #e9fff4;
+  color: #1b7a46;
 }
 
 /******************************
@@ -283,7 +296,6 @@ button:active { transform: translateY(2px); }
 /******************************
  * 9) FOOTERS
  ******************************/
-/* Newsletter footer (normal, bottom of page) */
 .newsletter-footer {
   background: rgba(255, 255, 255, 0.9);
   text-align: center;
@@ -292,7 +304,9 @@ button:active { transform: translateY(2px); }
   border-top: 2px solid rgba(0, 0, 0, 0.1);
 }
 
-.newsletter-footer h2 { color: #333; }
+.newsletter-footer h2 {
+  color: #333;
+}
 
 .newsletter-footer h3 {
   color: #4b0082;
@@ -304,8 +318,13 @@ button:active { transform: translateY(2px); }
   font-size: 0.95rem;
 }
 
-.footer-link { text-decoration: none; }
-.footer-link:hover h3 { text-decoration: underline; }
+.footer-link {
+  text-decoration: none;
+}
+
+.footer-link:hover h3 {
+  text-decoration: underline;
+}
 
 /* Sticky footer (always visible) */
 .sticky-footer {
@@ -325,7 +344,7 @@ button:active { transform: translateY(2px); }
 }
 
 /******************************
- * RSVP SECTION STYLES
+ * 10) RSVP SECTION
  ******************************/
 #rsvp {
   margin: 60px auto;
@@ -349,15 +368,8 @@ button:active { transform: translateY(2px); }
   font-weight: 600;
   color: #444;
   margin-bottom: 20px;
-  transition: opacity .25s ease;
+  transition: opacity 0.25s ease;
 }
-.dark-mode #rsvp-count { color: #e9eef7; }
-
-
-.dark-mode #rsvp-count {
-  color: #e9eef7;
-}
-
 
 .rsvp-para,
 .rsvp-participants {
@@ -425,9 +437,138 @@ button:active { transform: translateY(2px); }
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
 }
 
-/* Dark mode adjustments */
+/******************************
+ * 11) RESPONSIVE TWEAKS
+ ******************************/
+@media (max-width: 700px) {
+  .video-wrap iframe {
+    width: 90%;
+    height: auto;
+  }
+}
+
+/******************************
+ * 12) DARK MODE + TOGGLE
+ ******************************/
+.theme-toggle {
+  margin-top: 6px;
+  padding: 8px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: #fafafa;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.dark-mode .theme-toggle {
+  background: #141a28;
+  color: #e9eef7;
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+/* All dark-mode base text */
+.dark-mode {
+  color: #e9eef7;
+}
+
+body.dark-mode {
+  background-image:
+    radial-gradient(1px 1px at 18% 22%, rgba(255, 255, 255, 0.25) 50%, transparent 51%),
+    radial-gradient(1px 1px at 78% 16%, rgba(255, 255, 255, 0.18) 50%, transparent 51%),
+    linear-gradient(to bottom, #0b1a2a 0%, #0e2238 52%, #1a2d4a 100%);
+  background-repeat: repeat, repeat, no-repeat;
+  background-size: 600px 600px, 600px 600px, cover;
+  background-attachment: fixed;
+  color: #e9eef7;
+}
+
+/* header/top bar glass */
+.dark-mode .topbar {
+  background: linear-gradient(
+    to bottom,
+    rgba(16, 22, 34, 0.78),
+    rgba(16, 22, 34, 0.55)
+  );
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+}
+
+/* links */
+.dark-mode a {
+  color: #9ecbff;
+}
+
+.dark-mode .navbar a {
+  color: #e9eef7;
+}
+
+.dark-mode .navbar a:hover {
+  color: #b9dcff;
+}
+
+/* cards / panels (events, etc.) */
+.dark-mode .event {
+  background: rgba(30, 40, 60, 0.95);
+  color: #e9eef7;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* ensure trip text is bright */
+.dark-mode .event,
+.dark-mode .event h3,
+.dark-mode .event p,
+.dark-mode .status-chip {
+  color: #ffffff !important;
+}
+
+/* photo shadows a touch cooler */
+.dark-mode .hero-photo {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.35);
+}
+
+/* quote block */
+.dark-mode .quote-section h2,
+.dark-mode .quote-section h3,
+.dark-mode .quote {
+  color: #dfe7f4;
+}
+
+/* newsletter footer */
+.dark-mode .newsletter-footer {
+  background: rgba(16, 21, 34, 0.92);
+  color: #e9eef7;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .footer-link:hover h3 {
+  text-decoration: underline;
+}
+
+/* sticky footer */
+.dark-mode .sticky-footer {
+  background: rgba(16, 21, 34, 0.92);
+  color: #e9eef7;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* global buttons in dark mode */
+.dark-mode button {
+  background: #1a2842;
+  color: #e9eef7;
+}
+
+.dark-mode button:hover {
+  background: #213356;
+}
+
+/* RSVP dark-mode tweaks */
 .dark-mode #rsvp {
   background: rgba(20, 26, 40, 0.9);
+  color: #e9eef7;
+}
+
+.dark-mode #rsvp-count {
   color: #e9eef7;
 }
 
@@ -443,133 +584,25 @@ button:active { transform: translateY(2px); }
   background: rgba(24, 30, 46, 0.9);
 }
 
-
-/******************************
- * 10) RESPONSIVE TWEAKS
- ******************************/
-@media (max-width: 700px) {
-  .video-wrap iframe {
-    width: 90%;
-    height: auto;
-  }
-}
-
-.theme-toggle{
-  margin-top: 6px;
-  padding: 8px 14px;
-  border-radius: 10px;
-  border: 1px solid rgba(0,0,0,.08);
-  background:#fafafa;
-  font-weight:600;
-  cursor:pointer;
-}
-.dark-mode .theme-toggle{
-  background:#141a28;
-  color:#e9eef7;
-  border-color:rgba(255,255,255,.12);
-}
-
-/* ===== DARK MODE (night-sky horizon) ===== */
-.dark-mode{
-  color:#e9eef7;
-}
-
-body.dark-mode {
-  background-image:
-    radial-gradient(1px 1px at 18% 22%, rgba(255,255,255,.25) 50%, transparent 51%),
-    radial-gradient(1px 1px at 78% 16%, rgba(255,255,255,.18) 50%, transparent 51%),
-    linear-gradient(to bottom, #0b1a2a 0%, #0e2238 52%, #1a2d4a 100%);
-  background-repeat: repeat, repeat, no-repeat;
-  background-size: 600px 600px, 600px 600px, cover;
-  background-attachment: fixed;
-  color: #e9eef7;
-}
-
-
-/* header/top bar glass */
-.dark-mode .topbar{
-  background:linear-gradient(to bottom, rgba(16,22,34,.78), rgba(16,22,34,.55));
-  border-bottom:1px solid rgba(255,255,255,.08);
-  box-shadow:0 4px 14px rgba(0,0,0,.35);
-}
-
-/* links */
-.dark-mode a{ color:#9ecbff; }
-.dark-mode .navbar a{ color:#e9eef7; }
-.dark-mode .navbar a:hover{ color:#b9dcff; }
-
-/* cards / panels (events, etc.) */
-.dark-mode .event{
-  background:rgba(16,21,34,.90);
-  color:#e9eef7;
-  box-shadow:0 6px 14px rgba(0,0,0,.35);
-  border:1px solid rgba(255,255,255,.06);
-}
-
-/* photo shadows a touch cooler */
-.dark-mode .hero-photo{
-  box-shadow:0 6px 12px rgba(0,0,0,.35);
-}
-
-/* quote block */
-.dark-mode .quote-section h2,
-.dark-mode .quote-section h3,
-.dark-mode .quote{ color:#dfe7f4; }
-
-/* newsletter footer */
-.dark-mode .newsletter-footer{
-  background:rgba(16,21,34,.92);
-  color:#e9eef7;
-  border-top:1px solid rgba(255,255,255,.1);
-}
-.dark-mode .footer-link:hover h3{ text-decoration:underline; }
-
-/* sticky footer */
-.dark-mode .sticky-footer{
-  background:rgba(16,21,34,.92);
-  color:#e9eef7;
-  border-top:1px solid rgba(255,255,255,.1);
-}
-
-/* buttons (global) */
-.dark-mode button{
-  background:#1a2842;
-  color:#e9eef7;
-}
-.dark-mode button:hover{ background:#213356; }
-
-/* Fix event text visibility in dark mode */
-.dark-mode .event,
-.dark-mode .event h3,
-.dark-mode .event p,
-.dark-mode .event-label {
-  color: #ffffff !important; /* pure white text */
-}
-
-/* Optional: slightly lighten background for better contrast */
-.dark-mode .event {
-  background: rgba(30, 40, 60, 0.95);
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
-}
-
-/* === RSVP Form Text Colors in Dark Mode === */
+/* RSVP text labels in dark mode */
 .dark-mode .rsvp-para label,
 .dark-mode .rsvp-para p,
 .dark-mode .rsvp-para h3 {
-  color: #ffffff !important; /* label and paragraph text */
+  color: #ffffff !important;
 }
 
+/* form inputs & placeholders in dark mode */
 .dark-mode input,
 .dark-mode textarea,
 .dark-mode select {
-  background-color: rgba(255, 255, 255, 0.08); /* subtle translucent box */
-  color: #ffffff; /* input text color */
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .dark-mode input::placeholder,
 .dark-mode textarea::placeholder {
-  color: rgba(255, 255, 255, 0.6); /* lighter placeholder text */
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .dark-mode select option {
@@ -577,15 +610,83 @@ body.dark-mode {
   color: #ffffff;
 }
 
-/* Highlight invalid inputs */
+/******************************
+ * 13) FORM ERROR STYLING
+ ******************************/
 .error {
   border: 2px solid #e63946 !important; /* red border */
   background-color: rgba(230, 57, 70, 0.1); /* soft pink background */
   transition: 0.3s;
 }
 
-/* Optional for dark mode – adjust contrast */
 .dark-mode .error {
   border: 2px solid #ff7b7b !important;
   background-color: rgba(255, 80, 80, 0.15);
 }
+
+/******************************
+ * 14) SUCCESS MODAL
+ ******************************/
+.modal {
+  /* hidden by default */
+  display: none;
+
+  /* lock it to the viewport */
+  position: fixed;
+  z-index: 2000;
+
+  /* fill the entire screen */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+
+  /* shadow background behind modal */
+  background-color: rgba(0, 0, 0, 0.4);
+
+  /* center the modal content */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* card in the middle of the screen */
+.modal-container {
+  padding: 40px;
+  width: min(90%, 480px);
+
+  background-color: #f7f3ff;
+  color: #222;
+
+  text-align: center;
+  font-size: 1rem;
+  font-family: monospace;
+
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}
+
+.modal-item img {
+  max-width: 160px;
+  border-radius: 12px;
+}
+
+/* dark-mode version of the modal */
+.dark-mode .modal-container {
+  background-color: #141a28;
+  color: #e9eef7;
+}
+#modal-img {
+  width: 160px;      /* adjust as you want */
+  height: 160px;
+  object-fit: cover;     /* this crops the GIF */
+  object-position: center; /* keeps the plane centered */
+  border-radius: 10px; /* optional: rounded edges */
+}
+
+
